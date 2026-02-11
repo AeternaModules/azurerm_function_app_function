@@ -9,7 +9,7 @@ resource "azurerm_function_app_function" "function_app_functions" {
   test_data       = each.value.test_data
 
   dynamic "file" {
-    for_each = each.value.file != null ? [each.value.file] : []
+    for_each = each.value.file != null ? each.value.file : []
     content {
       content = file.value.content
       name    = file.value.name

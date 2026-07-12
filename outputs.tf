@@ -1,3 +1,7 @@
+output "function_app_functions_id" {
+  description = "Map of id values across all function_app_functions, keyed the same as var.function_app_functions"
+  value       = { for k, v in azurerm_function_app_function.function_app_functions : k => v.id }
+}
 output "function_app_functions_config_json" {
   description = "Map of config_json values across all function_app_functions, keyed the same as var.function_app_functions"
   value       = { for k, v in azurerm_function_app_function.function_app_functions : k => v.config_json }

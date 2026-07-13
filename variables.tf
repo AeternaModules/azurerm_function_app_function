@@ -18,7 +18,7 @@ EOT
     config_json     = string
     function_app_id = string
     name            = string
-    enabled         = optional(bool) # Default: true
+    enabled         = optional(bool)
     language        = optional(string)
     test_data       = optional(string)
     file = optional(list(object({
@@ -26,13 +26,5 @@ EOT
       name    = string
     })))
   }))
-  validation {
-    condition = alltrue([
-      for k, v in var.function_app_functions : (
-        v.file == null || (length(v.file) >= 1)
-      )
-    ])
-    error_message = "Each file list must contain at least 1 items"
-  }
 }
 
